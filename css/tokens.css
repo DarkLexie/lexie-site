@@ -1,0 +1,59 @@
+/* Design tokens — shared palette + per-theme overrides (technical spec §6) */
+
+:root {
+  --black: #030405;
+  --charcoal: #090b0d;
+  --deep-graphite: #111316;
+
+  --gold: #d9b46b;
+  --warm-gold: #f1c56f;
+  --muted-gold: #a98243;
+
+  --burgundy: #6f1d22;
+  --blood-burgundy: #8a252b;
+  --soft-burgundy-glow: rgba(138, 37, 43, 0.35);
+
+  --cream: #f4e5c0;
+  --soft-cream: #d8c49a;
+
+  --font-display: "Cormorant Garamond", serif;
+  --font-caps: "Cinzel", serif;
+  --font-ui: "Inter", sans-serif;
+
+  --header-height: 84px;
+  --radius-card: 14px;
+  --radius-pill: 999px;
+  --transition-fast: 220ms ease;
+  --transition-med: 400ms ease;
+}
+
+/* Light Art palette — warm dark brown-gold, never near-black */
+:root[data-theme="light"] {
+  --page-bg: #1c1206;
+  --page-bg-alt: #2c1d09;
+  --page-bg-gradient: radial-gradient(ellipse 120% 90% at 50% 0%, #4a2f0d 0%, #26190a 50%, #0f0a04 100%);
+  --accent: #e3b761;
+  --accent-strong: #f1c56f;
+  --accent-glow: rgba(244, 190, 94, 0.45);
+  --button-bg: linear-gradient(180deg, #f2c66d, #8c5a19);
+  --card-border: rgba(231, 180, 91, 0.65);
+  --nav-active-color: var(--warm-gold);
+  --text-main: #f2e4c5;
+  --text-muted: #cdb083;
+}
+
+/* Dark Art palette — silvery white + a single consistent brand red (matches the Dark Art button) */
+:root[data-theme="dark"] {
+  --page-bg: #020304;
+  --page-bg-alt: #050506;
+  --page-bg-gradient: radial-gradient(ellipse 120% 90% at 50% 0%, #0d0708 0%, #020304 60%, #000000 100%);
+  --accent: #b23a3f;
+  --accent-strong: #c7454c;
+  --accent-secondary: #d8d2d2;
+  --accent-glow: rgba(178, 58, 63, 0.45);
+  --button-bg: linear-gradient(180deg, #93313a, #3a0f14);
+  --card-border: rgba(178, 58, 63, 0.68);
+  --nav-active-color: var(--accent-strong);
+  --text-main: #f1eeee;
+  --text-muted: #b9adad;
+}
