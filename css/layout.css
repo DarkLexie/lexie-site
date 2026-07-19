@@ -205,16 +205,16 @@
   justify-self: end;
   width: min(640px, 100%);
   aspect-ratio: 9 / 16;
-  -webkit-mask-image: radial-gradient(ellipse 62% 58% at 50% 50%, black 68%, transparent 100%);
-  mask-image: radial-gradient(ellipse 62% 58% at 50% 50%, black 68%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 78% 76% at 50% 50%, black 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 78% 76% at 50% 50%, black 55%, transparent 100%);
 }
 
 .hero__accent-video::before {
   content: "";
   position: absolute;
-  inset: -18%;
-  background: radial-gradient(ellipse 50% 48% at 50% 50%, var(--accent-glow), transparent 70%);
-  filter: blur(40px);
+  inset: -30%;
+  background: radial-gradient(ellipse 55% 52% at 50% 50%, var(--accent-glow), transparent 75%);
+  filter: blur(60px);
   z-index: -1;
 }
 
@@ -292,44 +292,45 @@
   box-shadow: 0 0 14px rgba(199, 69, 76, 0.55);
 }
 
-/* Faint artwork bleeding into the background of otherwise-empty sections */
+/* Faint artwork bleeding into the background of otherwise-empty sections.
+   Uses a real element (not ::before) so JS can set background-image as an
+   inline style — inline styles resolve relative URLs against the page,
+   not the stylesheet, which is what we need on GitHub Pages subpaths. */
 .bg-art {
   position: relative;
   isolation: isolate;
 }
 
-.bg-art::before {
+.bg-art__layer {
   content: "";
   position: absolute;
-  inset: -5%;
+  inset: -8%;
   z-index: -1;
-  background-image: var(--bg-art-image);
   background-size: cover;
   background-position: center;
-  opacity: 0.1;
-  filter: blur(6px);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent),
-    linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  filter: blur(10px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 22%, black 78%, transparent),
+    linear-gradient(to right, transparent, black 15%, black 85%, transparent);
   -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent),
-    linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 22%, black 78%, transparent),
+    linear-gradient(to right, transparent, black 15%, black 85%, transparent);
   mask-composite: intersect;
 }
 
-:root[data-theme="light"] .bg-art::before { opacity: 0.1; }
-:root[data-theme="dark"] .bg-art::before { opacity: 0.2; }
+:root[data-theme="light"] .bg-art__layer { opacity: 0.1; }
+:root[data-theme="dark"] .bg-art__layer { opacity: 0.2; }
 
 /* About the artist (shared: home teaser, artist page, gallery footer block) */
 .about {
   display: grid;
   grid-template-columns: 0.9fr 1.4fr;
   gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
+  align-items: start;
   padding: clamp(3rem, 8vw, 5rem) 0;
 }
 
 .about--compact {
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: minmax(260px, 340px) 1fr;
 }
 
 @media (max-width: 900px) {

@@ -117,7 +117,14 @@
       function applyTheme(theme) {
         if (portraitEl) portraitEl.setAttribute("src", `images/portraits/author-${theme}.webp`);
         bgArtEls.forEach((el) => {
-          el.style.setProperty("--bg-art-image", `url(${el.getAttribute("data-" + theme)})`);
+          let layer = el.querySelector(":scope > .bg-art__layer");
+          if (!layer) {
+            layer = document.createElement("div");
+            layer.className = "bg-art__layer";
+            layer.setAttribute("aria-hidden", "true");
+            el.prepend(layer);
+          }
+          layer.style.backgroundImage = `url(${el.getAttribute("data-" + theme)})`;
         });
       }
       applyTheme(document.documentElement.getAttribute("data-theme") || "dark");
