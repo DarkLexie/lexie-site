@@ -50,16 +50,40 @@
     });
   }
 
+  // ---------- Likes (localStorage) ----------
+  const LIKES_KEY = "lexie-likes";
+  function readLikes() {
+    try { return JSON.parse(window.localStorage.getItem(LIKES_KEY)) || {}; }
+    catch { return {}; }
+  }
+  function writeLikes(likes) {
+    window.localStorage.setItem(LIKES_KEY, JSON.stringify(likes));
+  }
+  let likes = readLikes();
+
+  function isNew(work) {
+    if (!work.dateAdded) return false;
+    const added = new Date(work.dateAdded + "T00:00:00");
+    const diffDays = (Date.now() - added.getTime()) / (1000 * 60 * 60 * 24);
+    return diffDays >= 0 && diffDays <= 2;
+  }
+
   function cardMarkup(work, index) {
     const isVideo = work.type === "video";
     const thumb = isVideo ? work.poster : `images/preview/${work.universe}/${work.slug}.webp`;
     const playIcon = isVideo
       ? `<span class="gallery-card__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>`
       : "";
+    const badge = isNew(work) ? `<span class="gallery-card__badge">New</span>` : "";
+    const liked = !!likes[work.slug];
     return `
       <figure class="gallery-card" data-index="${index}" tabindex="0" role="button" aria-label="Open ${work.title}">
         <img src="${thumb}" alt="${work.title}" loading="lazy" width="${work.w}" height="${work.h}">
         ${playIcon}
+        ${badge}
+        <button class="gallery-card__like${liked ? " is-liked" : ""}" data-like="${work.slug}" aria-label="Like ${work.title}" aria-pressed="${liked}">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-10-9.1C.5 8.7 2.2 5 5.7 5c2 0 3.5 1.1 4.3 2.6C10.8 6.1 12.3 5 14.3 5c3.5 0 5.2 3.7 3.7 6.9C19.5 16.4 12 21 12 21z"/></svg>
+        </button>
         <figcaption class="gallery-card__caption">${work.title}</figcaption>
       </figure>`;
   }
@@ -79,6 +103,17 @@
           e.preventDefault();
           openLightbox(Number(card.getAttribute("data-index")));
         }
+      });
+    });
+    galleryEl.querySelectorAll("[data-like]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const slug = btn.getAttribute("data-like");
+        likes[slug] = !likes[slug];
+        if (!likes[slug]) delete likes[slug];
+        writeLikes(likes);
+        btn.classList.toggle("is-liked", !!likes[slug]);
+        btn.setAttribute("aria-pressed", !!likes[slug]);
       });
     });
     observeShine();

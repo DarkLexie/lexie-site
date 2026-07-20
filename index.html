@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
+  <div class="preloader" aria-hidden="true">
+    <canvas class="preloader-canvas"></canvas>
+    <div class="preloader__title">ART <span>by</span> LEXIE</div>
+  </div>
   <canvas class="ambient-canvas" aria-hidden="true"></canvas>
   <canvas class="theme-transition-canvas" aria-hidden="true"></canvas>
 
@@ -120,8 +124,10 @@
   </div>
 
   <script src="js/theme.js"></script>
+  <script src="js/preloader.js"></script>
   <script src="js/theme-transition.js"></script>
   <script src="js/particles.js"></script>
+  <script src="js/cursor-trail.js"></script>
   <script src="js/hero-video.js"></script>
   <script src="js/gallery.js"></script>
   <script src="js/main.js"></script>

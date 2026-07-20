@@ -100,10 +100,12 @@
     position: fixed;
     inset: 0;
     top: var(--header-height);
+    z-index: 60;
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
-    background: var(--page-bg);
+    background: linear-gradient(180deg, var(--page-bg) 0%, rgba(0, 0, 0, 0.94) 45%, rgba(0, 0, 0, 0.94) 55%, var(--page-bg) 100%), var(--page-bg);
+    backdrop-filter: blur(18px);
     transform: translateX(100%);
     transition: transform var(--transition-med);
   }
@@ -317,8 +319,8 @@
   mask-composite: intersect;
 }
 
-:root[data-theme="light"] .bg-art__layer { opacity: 0.1; }
-:root[data-theme="dark"] .bg-art__layer { opacity: 0.2; }
+:root[data-theme="light"] .bg-art__layer { opacity: 0.5; }
+:root[data-theme="dark"] .bg-art__layer { opacity: 0.5; }
 
 /* About the artist (shared: home teaser, artist page, gallery footer block) */
 .about {

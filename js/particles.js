@@ -121,10 +121,25 @@
     });
   }
 
-  function loop() {
+  // Slow tint wash cycling through the background every ~2.5s —
+  // darkening pulses on Dark, warm gold pulses on Light.
+  const CYCLE_MS = 2500;
+  function drawCycleTint(w, h, now) {
+    const phase = (now % CYCLE_MS) / CYCLE_MS;
+    const wave = (Math.sin(phase * Math.PI * 2) + 1) / 2; // 0..1
+    if (theme === "dark") {
+      ctx.fillStyle = `rgba(0, 0, 0, ${0.06 + wave * 0.16})`;
+    } else {
+      ctx.fillStyle = `rgba(241, 197, 111, ${0.03 + wave * 0.09})`;
+    }
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  function loop(now) {
     if (!running) return;
     const w = window.innerWidth, h = window.innerHeight;
     if (theme === "dark") drawAsh(w, h); else drawFireflies(w, h);
+    drawCycleTint(w, h, now || 0);
     raf = requestAnimationFrame(loop);
   }
 
