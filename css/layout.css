@@ -43,7 +43,7 @@
 .nav__link {
   position: relative;
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.35rem;
   color: var(--text-main);
   padding: 0.25rem 0;
   transition: color var(--transition-fast);
@@ -205,7 +205,7 @@
 
 .hero__eyebrow {
   font-family: var(--font-caps);
-  font-size: 1rem;
+  font-size: 1.1rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--accent);
@@ -214,7 +214,7 @@
 .hero__subtitle {
   max-width: 62ch;
   color: var(--text-muted);
-  font-size: 1.35rem;
+  font-size: 1.55rem;
   margin: 1.25rem 0 2rem;
 }
 
@@ -268,7 +268,7 @@
 /* Section title (tech spec §9.3) */
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 7vw, 6.2rem);
+  font-size: clamp(3.6rem, 7.5vw, 6.8rem);
   line-height: 0.95;
   letter-spacing: -0.02em;
   color: var(--text-main);
@@ -292,9 +292,8 @@
   justify-content: flex-start;
   gap: 0.5rem;
   margin: 1.25rem 0;
-  width: fit-content;
-  max-width: 220px;
-  overflow: visible;
+  width: 280px;
+  max-width: 100%;
 }
 
 .divider img {
@@ -302,7 +301,6 @@
   height: auto;
   opacity: 0.9;
   display: none;
-  transform: scale(2.2);
 }
 
 :root[data-theme="light"] .divider__spark {
@@ -378,20 +376,20 @@
 
 .about__portrait img {
   width: 100%;
-  max-width: 320px;
+  max-width: 380px;
   margin: 0 auto;
 }
 
 .about__bio p {
   color: var(--text-muted);
   max-width: 60ch;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
 }
 
 .about__quote {
   font-style: italic;
   color: var(--text-main);
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   margin: 1.5rem 0;
 }
 

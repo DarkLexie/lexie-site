@@ -13,16 +13,16 @@
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  padding: 0.85rem 1.8rem;
+  padding: 1rem 2.1rem;
   border: none;
   background: transparent;
   color: var(--text-muted);
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   transition: background var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.side-toggle__btn svg { width: 18px; height: 18px; fill: currentColor; }
+.side-toggle__btn svg { width: 21px; height: 21px; fill: currentColor; }
 
 .side-toggle__btn.is-active {
   background: var(--button-bg);
@@ -40,13 +40,13 @@
 
 .chip {
   position: relative;
-  padding: 0.7rem 1.5rem;
+  padding: 0.8rem 1.7rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--card-border);
   background: rgba(0, 0, 0, 0.35);
   color: var(--text-muted);
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   transition: background var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
