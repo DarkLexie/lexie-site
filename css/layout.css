@@ -53,9 +53,9 @@
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -10px;
+  bottom: -16px;
   width: 0;
-  height: 14px;
+  height: 30px;
   transform: translateX(-50%);
   transition: width var(--transition-fast);
   background-repeat: no-repeat;
@@ -76,7 +76,7 @@
 
 .nav__link:hover::after,
 .nav__link[aria-current="page"]::after {
-  width: 72px;
+  width: 140px;
 }
 
 .nav__link[aria-current="page"] {
@@ -104,10 +104,13 @@
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
-    background: linear-gradient(180deg, var(--page-bg) 0%, rgba(0, 0, 0, 0.94) 45%, rgba(0, 0, 0, 0.94) 55%, var(--page-bg) 100%), var(--page-bg);
-    backdrop-filter: blur(18px);
+    background: #050506;
     transform: translateX(100%);
     transition: transform var(--transition-med);
+  }
+
+  :root[data-theme="light"] .nav {
+    background: #1c1206;
   }
 
   .nav.is-open {
@@ -144,45 +147,58 @@
 .footer__contact {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.55rem;
   font-family: var(--font-ui);
   font-size: 1rem;
-  color: var(--text-main);
   padding: 0.7rem 1.1rem;
-  border: 1px solid var(--contact-color, var(--card-border));
+  border: none;
   border-radius: 10px;
-  background: color-mix(in srgb, var(--contact-color, var(--card-border)) 12%, transparent);
-  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+  background: rgba(0, 0, 0, 0.22);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast), background var(--transition-fast);
 }
 
 .footer__contact:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 16px var(--contact-glow, var(--accent-glow));
+  box-shadow: 0 0 16px var(--accent-glow);
+  background: rgba(0, 0, 0, 0.32);
 }
 
 .footer__contact svg {
   width: 20px;
   height: 20px;
   fill: none;
-  stroke: var(--contact-color, var(--accent));
+  stroke: var(--accent-strong);
   stroke-width: 1.6;
 }
 
-.footer__contact--pinterest svg { fill: var(--contact-color, var(--accent)); stroke: none; }
+.footer__contact--pinterest svg { fill: var(--accent-strong); stroke: none; }
 
-/* Instagram (dark side) — burgundy · Instagram (light side) — gold · Pinterest — copper (tech spec §4.4) */
-.footer__contact--ig-dark { --contact-color: #8a252b; --contact-glow: rgba(138, 37, 43, 0.5); }
-.footer__contact--ig-light { --contact-color: #e3b761; --contact-glow: rgba(227, 183, 97, 0.5); }
-.footer__contact--pinterest { --contact-color: #b8763a; --contact-glow: rgba(184, 118, 58, 0.5); }
+/* Label ("Instagram"/"Pinterest") follows theme text color; handle follows theme accent */
+.footer__contact__label {
+  color: var(--text-main);
+}
+
+:root[data-theme="light"] .footer__contact__label {
+  color: var(--cream);
+}
+
+.footer__contact__handle {
+  color: var(--accent-strong);
+  margin-left: 0.15em;
+}
 
 /* Hero */
 .hero {
   position: relative;
-  padding: clamp(1.5rem, 5vw, 3rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+  padding: clamp(0.75rem, 3vw, 1.5rem) 0 clamp(1rem, 3vw, 1.5rem);
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 1.15fr 0.85fr;
   gap: clamp(1rem, 3vw, 2rem);
   align-items: center;
+}
+
+.hero.bg-art .bg-art__layer {
+  opacity: 0.68 !important;
 }
 
 .hero__content { position: relative; z-index: 2; }
@@ -196,7 +212,7 @@
 }
 
 .hero__subtitle {
-  max-width: 46ch;
+  max-width: 62ch;
   color: var(--text-muted);
   font-size: 1.35rem;
   margin: 1.25rem 0 2rem;
@@ -205,10 +221,11 @@
 .hero__accent-video {
   position: relative;
   justify-self: end;
-  width: min(640px, 100%);
+  margin-right: clamp(1.5rem, 6vw, 4.5rem);
+  width: min(500px, 100%);
   aspect-ratio: 9 / 16;
-  -webkit-mask-image: radial-gradient(ellipse 78% 76% at 50% 50%, black 55%, transparent 100%);
-  mask-image: radial-gradient(ellipse 78% 76% at 50% 50%, black 55%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 68% at 50% 50%, black 20%, transparent 88%);
+  mask-image: radial-gradient(ellipse 70% 68% at 50% 50%, black 20%, transparent 88%);
 }
 
 .hero__accent-video::before {
@@ -220,10 +237,22 @@
   z-index: -1;
 }
 
+.hero__accent-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse 68% 66% at 50% 50%, transparent 45%, var(--page-bg) 92%);
+  filter: blur(22px);
+  mix-blend-mode: normal;
+}
+
 .hero__accent-video video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: saturate(1.02);
 }
 
 @media (max-width: 1023px) {
@@ -260,10 +289,12 @@
 .divider {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.5rem;
   margin: 1.25rem 0;
-  max-width: 260px;
+  width: fit-content;
+  max-width: 220px;
+  overflow: visible;
 }
 
 .divider img {
@@ -271,6 +302,7 @@
   height: auto;
   opacity: 0.9;
   display: none;
+  transform: scale(2.2);
 }
 
 :root[data-theme="light"] .divider__spark {
@@ -306,16 +338,17 @@
 .bg-art__layer {
   content: "";
   position: absolute;
-  inset: -8%;
+  inset: -4%;
   z-index: -1;
+  min-height: 480px;
   background-size: cover;
   background-position: center;
-  filter: blur(10px);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 22%, black 78%, transparent),
-    linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  filter: blur(6px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent),
+    linear-gradient(to right, transparent, black 6%, black 94%, transparent);
   -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to bottom, transparent, black 22%, black 78%, transparent),
-    linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent),
+    linear-gradient(to right, transparent, black 6%, black 94%, transparent);
   mask-composite: intersect;
 }
 
@@ -327,8 +360,8 @@
   display: grid;
   grid-template-columns: 0.9fr 1.4fr;
   gap: clamp(2rem, 5vw, 4rem);
-  align-items: start;
-  padding: clamp(3rem, 8vw, 5rem) 0;
+  align-items: center;
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0;
 }
 
 .about--compact {
@@ -378,4 +411,23 @@
 /* Page wrapper for non-home pages */
 .page-hero {
   padding: clamp(3rem, 8vw, 5rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* Artist page: title block sits right above the bio/photo, whole thing centered on screen */
+.about-page {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.5rem, 5vw, 3rem) 0;
+}
+
+.about-page__header {
+  text-align: center;
+  margin-bottom: clamp(1rem, 3vw, 2rem);
+}
+
+.about-page__header .divider {
+  margin-left: auto;
+  margin-right: auto;
 }

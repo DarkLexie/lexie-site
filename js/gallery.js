@@ -157,7 +157,8 @@
     wrapper.className = "lightbox__media";
     wrapper.innerHTML = media;
     lbStage.prepend(wrapper);
-    lbMeta.innerHTML = `<div class="title">${work.title}</div><div class="category">${(work.tags || []).join(" · ")}</div>`;
+    lbMeta.classList.toggle("is-hidden", isVideo);
+    lbMeta.innerHTML = isVideo ? "" : `<div class="title">${work.title}</div><div class="category">${(work.tags || []).join(" · ")}</div>`;
   }
 
   function openLightbox(index) {

@@ -27,10 +27,14 @@
   let particles = [];
   let mouseX = -1000, mouseY = -1000;
   let lastSpawn = 0;
+  let lastMoveTime = 0;
+  let idleAngle = 0;
+  let lastIdleSpawn = 0;
 
   window.addEventListener("mousemove", (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    lastMoveTime = performance.now();
     const now = performance.now();
     if (now - lastSpawn < 16) return;
     lastSpawn = now;
@@ -110,8 +114,46 @@
     particles = particles.filter((p) => p.life > 0);
   }
 
-  function loop() {
+  // While the cursor sits still, keep a slow trickle circulating around it
+  // (smoke swirl on Dark, orbiting sparkle on Light) instead of going empty.
+  function spawnIdle(now) {
+    if (mouseX < 0 || now - lastMoveTime < 220) return;
+    if (now - lastIdleSpawn < 90) return;
+    lastIdleSpawn = now;
+    idleAngle += 0.55;
+    const orbitR = 16;
+    const ox = mouseX + Math.cos(idleAngle) * orbitR;
+    const oy = mouseY + Math.sin(idleAngle) * orbitR;
+    const tangentX = -Math.sin(idleAngle);
+    const tangentY = Math.cos(idleAngle);
+
+    if (theme() === "dark") {
+      particles.push({
+        x: ox,
+        y: oy,
+        r: rand(10, 18),
+        vx: tangentX * 0.5,
+        vy: tangentY * 0.5 - 0.15,
+        life: 1,
+        decay: rand(0.02, 0.03),
+      });
+    } else {
+      particles.push({
+        x: ox,
+        y: oy,
+        r: rand(1, 2.2),
+        vx: tangentX * 0.7,
+        vy: tangentY * 0.7,
+        life: 1,
+        decay: rand(0.025, 0.04),
+        twinkle: rand(0, Math.PI * 2),
+      });
+    }
+  }
+
+  function loop(now) {
     const w = window.innerWidth, h = window.innerHeight;
+    spawnIdle(now || 0);
     if (theme() === "dark") drawSmoke(w, h); else drawSparkles(w, h);
     requestAnimationFrame(loop);
   }

@@ -48,24 +48,25 @@
     const veil = 1 - dissolveT;
 
     ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = `rgba(3, 3, 4, ${0.92 * veil + (1 - veil) * 0})`;
+    ctx.fillStyle = "rgba(2, 1, 2, 1)";
     ctx.fillRect(0, 0, w, h);
 
+    // Black smoke with only a faint burgundy undertone — never reads as grey/white.
     puffs.forEach((p) => {
       const px = p.x + p.drift * (elapsed / 1000);
       const py = p.y + p.rise * (elapsed / 1000);
       const grad = ctx.createRadialGradient(px, py, 0, px, py, p.r);
-      grad.addColorStop(0, `rgba(150, 142, 134, ${0.8 * veil})`);
-      grad.addColorStop(0.55, `rgba(95, 88, 82, ${0.5 * veil})`);
-      grad.addColorStop(1, "rgba(60, 55, 52, 0)");
+      grad.addColorStop(0, `rgba(28, 10, 12, ${0.75 * veil})`);
+      grad.addColorStop(0.55, `rgba(14, 5, 6, ${0.55 * veil})`);
+      grad.addColorStop(1, "rgba(4, 2, 2, 0)");
       ctx.fillStyle = grad;
       ctx.beginPath();
       ctx.arc(px, py, p.r, 0, Math.PI * 2);
       ctx.fill();
     });
 
-    if (dissolveT > 0) {
-      el.style.setProperty("--preloader-fade", String(1 - dissolveT));
+    if (dissolveT > 0 && !el.classList.contains("is-dissolving")) {
+      el.classList.add("is-dissolving");
     }
 
     if (t < 1) {
