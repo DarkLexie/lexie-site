@@ -361,7 +361,7 @@
   mask-composite: intersect;
 }
 
-:root[data-theme="light"] .bg-art__layer { opacity: 0.5; }
+:root[data-theme="light"] .bg-art__layer { opacity: 0.4; }
 :root[data-theme="dark"] .bg-art__layer { opacity: 0.5; }
 
 /* About the artist (shared: home teaser, artist page, gallery footer block) */
