@@ -284,6 +284,20 @@
     height: auto;
     width: min(480px, 90vw);
   }
+
+  /* Stacked single-column layout reads better centered than left-aligned */
+  .hero__content {
+    text-align: center;
+  }
+  .hero__content .hero-title-img,
+  .hero__content .divider,
+  .hero__content .side-toggle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero__content .filters {
+    justify-content: center;
+  }
 }
 
 /* Smaller phones: the enlarged text/buttons need room to breathe */
