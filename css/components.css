@@ -262,6 +262,16 @@
   transform: scale(1.12);
 }
 
+.gallery-card__like-count {
+  font-size: 0.78rem;
+  line-height: 1;
+  min-width: 0.6em;
+}
+
+.gallery-card__like-count:empty {
+  display: none;
+}
+
 .gallery-card__caption {
   position: absolute;
   left: 0; right: 0; bottom: 0;

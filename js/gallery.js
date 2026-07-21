@@ -50,7 +50,11 @@
     });
   }
 
-  // ---------- Likes (localStorage) ----------
+  // ---------- Likes ----------
+  // localStorage only remembers THIS browser's liked/not-liked state (so the
+  // heart shows filled correctly on return visits). The actual shared count
+  // seen by everyone lives in Supabase (see docs/supabase-setup.sql) and is
+  // only ever touched through the increment_like/decrement_like RPCs.
   const LIKES_KEY = "lexie-likes";
   function readLikes() {
     try { return JSON.parse(window.localStorage.getItem(LIKES_KEY)) || {}; }
@@ -60,6 +64,25 @@
     window.localStorage.setItem(LIKES_KEY, JSON.stringify(likes));
   }
   let likes = readLikes();
+  let likeCounts = {};
+  const supabase = window.LexieSupabase;
+
+  function loadLikeCounts() {
+    if (!supabase) return Promise.resolve();
+    return supabase
+      .rpc("get_like_counts")
+      .then(({ data, error }) => {
+        if (error) { console.error("get_like_counts failed", error); return; }
+        likeCounts = {};
+        (data || []).forEach((row) => { likeCounts[row.slug] = row.like_count; });
+      });
+  }
+
+  function updateLikeCountUI(slug, count) {
+    document.querySelectorAll(`[data-like="${slug}"] .gallery-card__like-count`).forEach((el) => {
+      el.textContent = count > 0 ? count : "";
+    });
+  }
 
   function isNew(work) {
     if (!work.dateAdded) return false;
@@ -76,6 +99,7 @@
       : "";
     const badge = isNew(work) ? `<span class="gallery-card__badge">New</span>` : "";
     const liked = !!likes[work.slug];
+    const count = likeCounts[work.slug] || 0;
     return `
       <figure class="gallery-card" data-index="${index}" tabindex="0" role="button" aria-label="Open ${work.title}">
         <img src="${thumb}" alt="${work.title}" loading="lazy" width="${work.w}" height="${work.h}">
@@ -83,6 +107,7 @@
         ${badge}
         <button class="gallery-card__like${liked ? " is-liked" : ""}" data-like="${work.slug}" aria-label="Like ${work.title}" aria-pressed="${liked}">
           <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
+          <span class="gallery-card__like-count">${count > 0 ? count : ""}</span>
         </button>
         <figcaption class="gallery-card__caption">${work.title}</figcaption>
       </figure>`;
@@ -109,11 +134,26 @@
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
         const slug = btn.getAttribute("data-like");
-        likes[slug] = !likes[slug];
-        if (!likes[slug]) delete likes[slug];
+        const nowLiked = !likes[slug];
+        likes[slug] = nowLiked;
+        if (!nowLiked) delete likes[slug];
         writeLikes(likes);
-        btn.classList.toggle("is-liked", !!likes[slug]);
-        btn.setAttribute("aria-pressed", !!likes[slug]);
+        btn.classList.toggle("is-liked", nowLiked);
+        btn.setAttribute("aria-pressed", nowLiked);
+
+        // Optimistic local bump while the RPC round-trips.
+        likeCounts[slug] = Math.max(0, (likeCounts[slug] || 0) + (nowLiked ? 1 : -1));
+        updateLikeCountUI(slug, likeCounts[slug]);
+
+        if (!supabase) return;
+        const rpc = nowLiked ? "increment_like" : "decrement_like";
+        supabase.rpc(rpc, { work_slug: slug }).then(({ data, error }) => {
+          if (error) { console.error(rpc + " failed", error); return; }
+          if (typeof data === "number") {
+            likeCounts[slug] = data;
+            updateLikeCountUI(slug, data);
+          }
+        });
       });
     });
     observeShine();
@@ -198,9 +238,11 @@
   }
 
   // ---------- Boot ----------
-  fetch(dataUrl)
-    .then((r) => r.json())
-    .then((data) => {
+  Promise.all([
+    fetch(dataUrl).then((r) => r.json()),
+    loadLikeCounts(),
+  ])
+    .then(([data]) => {
       allWorks = data;
       renderFilters();
       renderGrid();
