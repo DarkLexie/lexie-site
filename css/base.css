@@ -9,8 +9,14 @@ html, body {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
+/* overflow-x lives on <html>, not <body>: on some mobile browsers, an
+   overflow value on the same element as position:relative turns that
+   element into the containing block for position:fixed descendants
+   (the lightbox, mobile nav drawer), making them scroll with the page
+   instead of staying pinned to the viewport. */
 body {
   position: relative;
   background: var(--page-bg-gradient), var(--page-bg);
@@ -19,7 +25,6 @@ body {
   font-size: 1.2rem;
   line-height: 1.65;
   min-height: 100vh;
-  overflow-x: hidden;
   transition: background var(--transition-med);
 }
 
