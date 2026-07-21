@@ -31,8 +31,9 @@
 .side-toggle__btn.is-active {
   background: var(--button-bg);
   color: var(--button-text-active, var(--text-main));
+  font-weight: 600;
   box-shadow: 0 0 14px var(--accent-glow), 0 0 34px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
 :root[data-theme="dark"] .side-toggle__btn:not(.is-active) {
@@ -109,9 +110,10 @@
 .chip.is-active {
   background: var(--button-bg);
   color: var(--button-text-active, var(--text-main));
+  font-weight: 600;
   box-shadow: 0 0 12px var(--accent-glow), 0 0 28px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   border-color: transparent;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
 /* Gallery grid — 3 large cards per row on desktop */

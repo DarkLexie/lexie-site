@@ -36,7 +36,7 @@
   --accent-strong: #ffcf5c;
   --accent-glow: rgba(255, 197, 74, 0.7);
   --button-bg: linear-gradient(180deg, #ffe29a 0%, #ffc857 45%, #d98f1f 100%);
-  --button-text-active: #3a2308;
+  --button-text-active: #ffffff;
   --card-border: rgba(231, 180, 91, 0.65);
   --nav-active-color: var(--warm-gold);
   --text-main: #f2e4c5;
