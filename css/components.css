@@ -9,6 +9,10 @@
   background: rgba(0, 0, 0, 0.4);
 }
 
+:root[data-theme="dark"] .side-toggle {
+  border-color: rgba(160, 160, 160, 0.5);
+}
+
 .side-toggle__btn {
   display: inline-flex;
   align-items: center;
