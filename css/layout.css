@@ -199,7 +199,7 @@
 /* Hero */
 .hero {
   position: relative;
-  padding: clamp(0.75rem, 3vw, 1.5rem) 0 clamp(2rem, 5vw, 3rem);
+  padding: clamp(0.75rem, 3vw, 1.5rem) 0 clamp(1rem, 3vw, 1.5rem);
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: clamp(1rem, 3vw, 2rem);
