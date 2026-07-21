@@ -26,8 +26,9 @@
 
 .side-toggle__btn.is-active {
   background: var(--button-bg);
-  color: var(--text-main);
-  box-shadow: 0 0 22px var(--accent-glow);
+  color: var(--button-text-active, var(--text-main));
+  box-shadow: 0 0 14px var(--accent-glow), 0 0 34px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 /* Filter chips */
@@ -95,9 +96,10 @@
 
 .chip.is-active {
   background: var(--button-bg);
-  color: var(--text-main);
-  box-shadow: 0 0 18px var(--accent-glow);
+  color: var(--button-text-active, var(--text-main));
+  box-shadow: 0 0 12px var(--accent-glow), 0 0 28px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   border-color: transparent;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 /* Gallery grid — 3 large cards per row on desktop */

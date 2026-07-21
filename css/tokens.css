@@ -33,9 +33,10 @@
   --page-bg-alt: #2c1d09;
   --page-bg-gradient: radial-gradient(ellipse 120% 90% at 50% 0%, #4a2f0d 0%, #26190a 50%, #0f0a04 100%);
   --accent: #e3b761;
-  --accent-strong: #f1c56f;
-  --accent-glow: rgba(244, 190, 94, 0.45);
-  --button-bg: linear-gradient(180deg, #f2c66d, #8c5a19);
+  --accent-strong: #ffcf5c;
+  --accent-glow: rgba(255, 197, 74, 0.7);
+  --button-bg: linear-gradient(180deg, #ffe29a 0%, #ffc857 45%, #d98f1f 100%);
+  --button-text-active: #3a2308;
   --card-border: rgba(231, 180, 91, 0.65);
   --nav-active-color: var(--warm-gold);
   --text-main: #f2e4c5;
