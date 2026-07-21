@@ -2094,22 +2094,6 @@
         "h":  900
     },
     {
-        "slug":  "retro",
-        "title":  "Retro",
-        "universe":  "light",
-        "tags":  [
-                     "Reels",
-                     "Vintage"
-                 ],
-        "type":  "video",
-        "featured":  false,
-        "dateAdded":  "2026-07-18",
-        "poster":  "images/preview/light/retro.webp",
-        "src":  "images/videos/light/retro.mp4",
-        "w":  800,
-        "h":  1422
-    },
-    {
         "slug":  "migraine",
         "title":  "Migraine",
         "universe":  "dark",
