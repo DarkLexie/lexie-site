@@ -2044,38 +2044,6 @@
         "h":  1422
     },
     {
-        "slug":  "astronaut",
-        "title":  "Astronaut",
-        "universe":  "light",
-        "tags":  [
-                     "Reels",
-                     "Vintage"
-                 ],
-        "type":  "video",
-        "featured":  false,
-        "dateAdded":  "2026-07-18",
-        "poster":  "images/preview/light/astronaut.webp",
-        "src":  "images/videos/light/astronaut.mp4",
-        "w":  800,
-        "h":  980
-    },
-    {
-        "slug":  "chips-fight",
-        "title":  "Chips Fight",
-        "universe":  "light",
-        "tags":  [
-                     "Reels",
-                     "Creatures"
-                 ],
-        "type":  "video",
-        "featured":  false,
-        "dateAdded":  "2026-07-18",
-        "poster":  "images/preview/light/chips-fight.webp",
-        "src":  "images/videos/light/chips-fight.mp4",
-        "w":  800,
-        "h":  998
-    },
-    {
         "slug":  "fairytales",
         "title":  "Fairytales",
         "universe":  "light",
@@ -2124,22 +2092,6 @@
         "src":  "images/videos/light/kindness.mp4",
         "w":  720,
         "h":  900
-    },
-    {
-        "slug":  "little-cutie",
-        "title":  "Little Cutie",
-        "universe":  "light",
-        "tags":  [
-                     "Reels",
-                     "Creatures"
-                 ],
-        "type":  "video",
-        "featured":  false,
-        "dateAdded":  "2026-07-18",
-        "poster":  "images/preview/light/little-cutie.webp",
-        "src":  "images/videos/light/little-cutie.mp4",
-        "w":  800,
-        "h":  1422
     },
     {
         "slug":  "retro",
