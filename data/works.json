@@ -2086,11 +2086,11 @@
                  ],
         "type":  "video",
         "featured":  false,
-        "dateAdded":  "2026-07-18",
+        "dateAdded":  "2026-07-20",
         "poster":  "images/preview/light/fairytales.webp",
         "src":  "images/videos/light/fairytales.mp4",
-        "w":  800,
-        "h":  1000
+        "w":  720,
+        "h":  894
     },
     {
         "slug":  "fennec",
@@ -2119,11 +2119,11 @@
                  ],
         "type":  "video",
         "featured":  false,
-        "dateAdded":  "2026-07-18",
+        "dateAdded":  "2026-07-20",
         "poster":  "images/preview/light/kindness.webp",
         "src":  "images/videos/light/kindness.mp4",
-        "w":  800,
-        "h":  1000
+        "w":  720,
+        "h":  900
     },
     {
         "slug":  "little-cutie",
@@ -2188,5 +2188,197 @@
         "src":  "images/videos/light/cute-law-enforcement.mp4",
         "w":  720,
         "h":  974
+    },
+    {
+        "slug":  "night-guard",
+        "title":  "Night Guard",
+        "universe":  "dark",
+        "tags":  [
+                     "Reels",
+                     "Horror"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-07-20",
+        "poster":  "images/preview/dark/night-guard.webp",
+        "src":  "images/videos/dark/night-guard.mp4",
+        "w":  720,
+        "h":  1280
+    },
+    {
+        "slug":  "cyber",
+        "title":  "Cyber",
+        "universe":  "dark",
+        "tags":  [
+                     "Reels",
+                     "Post-Apocalyptic"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-07-20",
+        "poster":  "images/preview/dark/cyber.webp",
+        "src":  "images/videos/dark/cyber.mp4",
+        "w":  720,
+        "h":  960
+    },
+    {
+        "slug":  "dark-queen",
+        "title":  "Dark Queen",
+        "universe":  "dark",
+        "tags":  [
+                     "Reels",
+                     "Gothic"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-07-20",
+        "poster":  "images/preview/dark/dark-queen.webp",
+        "src":  "images/videos/dark/dark-queen.mp4",
+        "w":  720,
+        "h":  960
+    },
+    {
+        "slug":  "nun",
+        "title":  "Nun",
+        "universe":  "dark",
+        "tags":  [
+                     "Reels",
+                     "Horror"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-07-20",
+        "poster":  "images/preview/dark/nun.webp",
+        "src":  "images/videos/dark/nun.mp4",
+        "w":  720,
+        "h":  960
+    },
+    {
+        "slug":  "eternal-battle",
+        "title":  "Eternal Battle",
+        "universe":  "dark",
+        "tags":  [
+                     "Reels",
+                     "Cinematic Realism"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-07-20",
+        "poster":  "images/preview/dark/eternal-battle.webp",
+        "src":  "images/videos/dark/eternal-battle.mp4",
+        "w":  720,
+        "h":  406
+    },
+    {
+        "slug":  "serpent-queen",
+        "title":  "Serpent Queen",
+        "universe":  "dark",
+        "tags":  [
+                     "Reels",
+                     "Surreal"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-07-20",
+        "poster":  "images/preview/dark/serpent-queen.webp",
+        "src":  "images/videos/dark/serpent-queen.mp4",
+        "w":  720,
+        "h":  960
+    },
+    {
+        "slug":  "last-nerve",
+        "title":  "Last Nerve",
+        "universe":  "dark",
+        "tags":  [
+                     "Reels",
+                     "Moody"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-07-20",
+        "poster":  "images/preview/dark/last-nerve.webp",
+        "src":  "images/videos/dark/last-nerve.mp4",
+        "w":  720,
+        "h":  960
+    },
+    {
+        "slug":  "cute-astronaut",
+        "title":  "Cute Astronaut",
+        "universe":  "light",
+        "tags":  [
+                     "Reels",
+                     "Characters"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-07-20",
+        "poster":  "images/preview/light/cute-astronaut.webp",
+        "src":  "images/videos/light/cute-astronaut.mp4",
+        "w":  720,
+        "h":  882
+    },
+    {
+        "slug":  "lexie-theme",
+        "title":  "Lexie Theme",
+        "universe":  "light",
+        "tags":  [
+                     "Reels",
+                     "Characters"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-07-20",
+        "poster":  "images/preview/light/lexie-theme.webp",
+        "src":  "images/videos/light/lexie-theme.mp4",
+        "w":  720,
+        "h":  906
+    },
+    {
+        "slug":  "retro-galls",
+        "title":  "Retro Galls",
+        "universe":  "light",
+        "tags":  [
+                     "Reels",
+                     "Vintage"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-07-20",
+        "poster":  "images/preview/light/retro-galls.webp",
+        "src":  "images/videos/light/retro-galls.mp4",
+        "w":  720,
+        "h":  974
+    },
+    {
+        "slug":  "snack",
+        "title":  "Snack",
+        "universe":  "light",
+        "tags":  [
+                     "Reels",
+                     "Characters"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-07-20",
+        "poster":  "images/preview/light/snack.webp",
+        "src":  "images/videos/light/snack.mp4",
+        "w":  720,
+        "h":  898
+    },
+    {
+        "slug":  "snow-white",
+        "title":  "Snow White",
+        "universe":  "light",
+        "tags":  [
+                     "Reels",
+                     "Characters"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-07-20",
+        "poster":  "images/preview/light/snow-white.webp",
+        "src":  "images/videos/light/snow-white.mp4",
+        "w":  720,
+        "h":  1068
     }
 ]
