@@ -33,6 +33,10 @@ body::after {
   background: radial-gradient(ellipse 90% 80% at 50% 35%, transparent 45%, rgba(0, 0, 0, 0.55) 100%);
 }
 
+:root[data-theme="light"] body::after {
+  background: radial-gradient(ellipse 84% 76% at 50% 35%, transparent 35%, rgba(0, 0, 0, 0.72) 100%);
+}
+
 p {
   font-size: 1.15rem;
 }

@@ -65,6 +65,8 @@
 
 :root[data-theme="light"] .nav__link::after {
   background-image: url("../images/ui/decor/divider-spark-light.webp");
+  background-size: 200% auto;
+  filter: brightness(1.4) drop-shadow(0 0 8px rgba(241, 197, 111, 0.85));
 }
 
 :root[data-theme="dark"] .nav__link::after {
@@ -74,8 +76,15 @@
   box-shadow: 0 0 10px rgba(199, 69, 76, 0.7);
 }
 
-.nav__link:hover::after,
 .nav__link[aria-current="page"]::after {
+  width: 140px;
+}
+
+.nav:hover .nav__link[aria-current="page"]:not(:hover)::after {
+  width: 0;
+}
+
+.nav__link:hover::after {
   width: 140px;
 }
 
@@ -190,7 +199,7 @@
 /* Hero */
 .hero {
   position: relative;
-  padding: clamp(0.75rem, 3vw, 1.5rem) 0 clamp(1rem, 3vw, 1.5rem);
+  padding: clamp(0.75rem, 3vw, 1.5rem) 0 clamp(2rem, 5vw, 3rem);
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: clamp(1rem, 3vw, 2rem);
@@ -215,7 +224,7 @@
   max-width: 62ch;
   color: var(--text-muted);
   font-size: 1.55rem;
-  margin: 1.25rem 0 2rem;
+  margin: 1.25rem 0 clamp(2rem, 5vw, 3.25rem);
 }
 
 .hero__accent-video {
@@ -358,7 +367,7 @@
   display: grid;
   grid-template-columns: 0.9fr 1.4fr;
   gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
+  align-items: start;
   padding: clamp(1.5rem, 4vw, 2.5rem) 0;
 }
 
@@ -422,7 +431,7 @@
 
 .about-page__header {
   text-align: center;
-  margin-bottom: clamp(1rem, 3vw, 2rem);
+  margin-bottom: clamp(0.5rem, 2vw, 1.25rem);
 }
 
 .about-page__header .divider {

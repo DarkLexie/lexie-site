@@ -47,8 +47,8 @@
           <div class="divider"><img class="divider__spark" src="images/ui/decor/divider-spark-light.webp" alt=""><div class="divider--plain"></div></div>
           <p class="hero__subtitle" data-hero-subtitle
              data-light="Visual stories of light, wonder, and warmth — where beauty reveals what words cannot."
-             data-dark="Visual stories born between light and shadow. Where emotion shapes the unseen.">
-            Visual stories born between light and shadow. Where emotion shapes the unseen.
+             data-dark="Visual stories born between light and shadow.||Where emotion shapes the unseen.">
+            Visual stories born between light and shadow.<br>Where emotion shapes the unseen.
           </p>
 
           <div class="side-toggle" role="group" aria-label="Choose Light or Dark art">
@@ -139,7 +139,13 @@
       const titleImg = document.querySelector("[data-hero-title]");
       const bgArtEls = document.querySelectorAll("[data-bg-art]");
       function applyTheme(theme) {
-        if (subtitleEl) subtitleEl.textContent = subtitleEl.getAttribute("data-" + theme);
+        if (subtitleEl) {
+          const raw = subtitleEl.getAttribute("data-" + theme) || "";
+          subtitleEl.innerHTML = raw
+            .split("||")
+            .map((part) => part.replace(/&/g, "&amp;").replace(/</g, "&lt;"))
+            .join("<br>");
+        }
         if (portraitEl) portraitEl.setAttribute("src", `images/portraits/author-${theme}.webp`);
         if (titleImg) titleImg.setAttribute("src", `images/ui/decor/hero-title-${theme}.webp`);
         bgArtEls.forEach((el) => {
@@ -155,6 +161,21 @@
       }
       applyTheme(document.documentElement.getAttribute("data-theme") || "dark");
       document.addEventListener("themechange", (e) => applyTheme(e.detail.theme));
+
+      // Keep the divider the same width as the rendered title artwork so its
+      // sparkle sits centered under "Lexie's universe", not under the whole
+      // (wider) two-line heading block.
+      const heroDivider = document.querySelector(".hero .divider");
+      function syncDividerWidth() {
+        if (heroDivider && titleImg && titleImg.getBoundingClientRect().width > 0) {
+          heroDivider.style.width = titleImg.getBoundingClientRect().width + "px";
+        }
+      }
+      if (titleImg) {
+        titleImg.addEventListener("load", syncDividerWidth);
+        syncDividerWidth();
+      }
+      window.addEventListener("resize", syncDividerWidth);
     })();
   </script>
 </body>

@@ -82,7 +82,7 @@
         ${playIcon}
         ${badge}
         <button class="gallery-card__like${liked ? " is-liked" : ""}" data-like="${work.slug}" aria-label="Like ${work.title}" aria-pressed="${liked}">
-          <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-10-9.1C.5 8.7 2.2 5 5.7 5c2 0 3.5 1.1 4.3 2.6C10.8 6.1 12.3 5 14.3 5c3.5 0 5.2 3.7 3.7 6.9C19.5 16.4 12 21 12 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
         </button>
         <figcaption class="gallery-card__caption">${work.title}</figcaption>
       </figure>`;
@@ -150,7 +150,7 @@
     if (!work) return;
     const isVideo = work.type === "video";
     const media = isVideo
-      ? `<video src="${work.src}" controls autoplay playsinline></video>`
+      ? `<video src="${work.src}" controls autoplay playsinline controlsList="nodownload noremoteplayback" disablePictureInPicture oncontextmenu="return false"></video>`
       : `<img src="images/full/${work.universe}/${work.slug}.webp" alt="${work.title}">`;
     lbStage.querySelector(".lightbox__media")?.remove();
     const wrapper = document.createElement("div");
