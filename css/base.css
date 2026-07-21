@@ -12,19 +12,20 @@ html {
   overflow-x: hidden;
 }
 
-/* overflow-x lives on <html>, not <body>: on some mobile browsers, an
-   overflow value on the same element as position:relative turns that
-   element into the containing block for position:fixed descendants
+/* body is intentionally NOT position:relative: on some mobile browsers,
+   an overflow value combined with position:relative on the same element
+   turns it into the containing block for position:fixed descendants
    (the lightbox, mobile nav drawer), making them scroll with the page
-   instead of staying pinned to the viewport. */
+   instead of staying pinned to the viewport. Nothing here needs body to
+   be a positioning context (body::after is position:fixed already). */
 body {
-  position: relative;
   background: var(--page-bg-gradient), var(--page-bg);
   color: var(--text-main);
   font-family: var(--font-display);
   font-size: 1.2rem;
   line-height: 1.65;
   min-height: 100vh;
+  overflow-x: hidden;
   transition: background var(--transition-med);
 }
 
