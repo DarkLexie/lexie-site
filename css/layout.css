@@ -10,14 +10,23 @@
   height: var(--header-height);
   background: transparent;
   border-bottom: 1px solid transparent;
-  backdrop-filter: blur(0px);
   transition: background var(--transition-med), border-color var(--transition-med), backdrop-filter var(--transition-med);
 }
 
+/* No backdrop-filter (not even blur(0px)) on the base rule: ANY non-"none"
+   filter/backdrop-filter value turns .header into the containing block for
+   its position:fixed descendants (the mobile .nav drawer), collapsing it
+   to the header's own 84px box instead of covering the full viewport. */
 .header.is-scrolled {
   background: rgba(3, 4, 5, 0.55);
   border-bottom: 1px solid rgba(217, 180, 107, 0.12);
   backdrop-filter: blur(16px);
+}
+
+@media (max-width: 767px) {
+  .header.is-scrolled {
+    backdrop-filter: none;
+  }
 }
 
 .header__inner {
@@ -361,7 +370,7 @@
   mask-composite: intersect;
 }
 
-:root[data-theme="light"] .bg-art__layer { opacity: 0.4; }
+:root[data-theme="light"] .bg-art__layer { opacity: 0.3; }
 :root[data-theme="dark"] .bg-art__layer { opacity: 0.5; }
 
 /* About the artist (shared: home teaser, artist page, gallery footer block) */
