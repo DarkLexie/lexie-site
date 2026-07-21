@@ -66,6 +66,8 @@
 
 :root[data-theme="light"] .chip::after {
   background-image: url("../images/ui/decor/divider-spark-light.webp");
+  background-size: 200% auto;
+  filter: brightness(1.4) drop-shadow(0 0 8px rgba(241, 197, 111, 0.85));
 }
 
 :root[data-theme="dark"] .chip::after {
@@ -75,8 +77,15 @@
   box-shadow: 0 0 10px var(--accent-glow);
 }
 
-.chip:hover::after,
 .chip.is-active::after {
+  width: 110px;
+}
+
+.filters:hover .chip.is-active:not(:hover)::after {
+  width: 0;
+}
+
+.chip:hover::after {
   width: 110px;
 }
 
