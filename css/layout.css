@@ -276,11 +276,17 @@
 }
 
 @media (max-width: 1023px) {
+  /* Plain block stacking instead of a single-column grid: the grid track
+     was measuring out wider than the container's own content box (a track
+     sizing quirk with these children), shifting all the centered content
+     right by the overflow amount. Block flow has no track-sizing math to
+     get wrong. */
   .hero {
-    grid-template-columns: 1fr;
+    display: block;
   }
   .hero__accent-video {
-    justify-self: center;
+    justify-self: unset;
+    margin: clamp(1rem, 3vw, 2rem) auto 0;
     height: auto;
     width: min(480px, 90vw);
   }
