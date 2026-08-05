@@ -25,10 +25,21 @@
     return allWorks.filter((w) => w.universe === theme());
   }
 
+  // Newest works first (falls back to original works.json order for equal/missing dates).
+  function byNewestFirst(list) {
+    return list
+      .map((w, i) => ({ w, i }))
+      .sort((a, b) => {
+        const diff = (Date.parse(b.w.dateAdded) || 0) - (Date.parse(a.w.dateAdded) || 0);
+        return diff !== 0 ? diff : a.i - b.i;
+      })
+      .map((entry) => entry.w);
+  }
+
   function filteredWorks() {
     const list = worksForTheme();
-    if (activeFilter === "All Works") return list;
-    return list.filter((w) => (w.tags || []).includes(activeFilter));
+    const filtered = activeFilter === "All Works" ? list : list.filter((w) => (w.tags || []).includes(activeFilter));
+    return byNewestFirst(filtered);
   }
 
   function renderFilters() {
