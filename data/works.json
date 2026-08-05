@@ -2316,5 +2316,98 @@
         "src":  "images/videos/light/snow-white.mp4",
         "w":  720,
         "h":  1068
+    },
+    {
+        "slug":  "pale-rider",
+        "title":  "Pale Rider",
+        "universe":  "dark",
+        "tags":  [
+                     "Reels",
+                     "Post-Apocalyptic"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-08-05",
+        "poster":  "images/preview/dark/pale-rider.webp",
+        "src":  "images/videos/dark/pale-rider.mp4",
+        "w":  720,
+        "h":  1280
+    },
+    {
+        "slug":  "hunting",
+        "title":  "Hunting",
+        "universe":  "dark",
+        "tags":  [
+                     "Reels",
+                     "Moody"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-08-05",
+        "poster":  "images/preview/dark/hunting.webp",
+        "src":  "images/videos/dark/hunting.mp4",
+        "w":  720,
+        "h":  1280
+    },
+    {
+        "slug":  "ancient-one",
+        "title":  "Ancient One",
+        "universe":  "dark",
+        "tags":  [
+                     "Reels",
+                     "Horror"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-08-05",
+        "poster":  "images/preview/dark/ancient-one.webp",
+        "src":  "images/videos/dark/ancient-one.mp4",
+        "w":  720,
+        "h":  960
+    },
+    {
+        "slug":  "city-ballet",
+        "title":  "City Ballet",
+        "universe":  "dark",
+        "tags":  [
+                     "Reels",
+                     "Surreal"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-08-05",
+        "poster":  "images/preview/dark/city-ballet.webp",
+        "src":  "images/videos/dark/city-ballet.mp4",
+        "w":  720,
+        "h":  1280
+    },
+    {
+        "slug":  "coffee-date",
+        "title":  "Coffee Date",
+        "universe":  "light",
+        "tags":  [
+                     "Reels",
+                     "Vintage",
+                     "Characters"
+                 ],
+        "type":  "video",
+        "featured":  false,
+        "dateAdded":  "2026-08-05",
+        "poster":  "images/preview/light/coffee-date.webp",
+        "src":  "images/videos/light/coffee-date.mp4",
+        "w":  720,
+        "h":  912
+    },
+    {
+        "slug":  "silent-scream",
+        "title":  "Silent Scream",
+        "universe":  "dark",
+        "tags":  [
+                     "Horror"
+                 ],
+        "featured":  false,
+        "dateAdded":  "2026-08-05",
+        "w":  1598,
+        "h":  2000
     }
 ]
